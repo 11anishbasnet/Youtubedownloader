@@ -96,19 +96,38 @@ public class MainGUI {
         try{
             httpURLConnection = (HttpURLConnection) url.openConnection();
             long length = httpURLConnection.getContentLengthLong();
+            return getSize(length,expectedOutput);
             System.out.println("The size of file is "+ length/(1024*1024) + "mb.");
         }
         catch(IOException e){
             throw new RuntimeException(e);
         }
     }
+
+    private float getSize(long length, String expectedOutput){
+        switch (expectedOutput){
+
+            case "mb":
+                System.out.println("The size of file is "+ length/(1024*1024) + "mb.");
+                break;
+            case "gb":
+                break;
+            default:
+                break;
+        }
+    }
+
     //link ="https://az764295.vo.msecnd.net/stable/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/VSCodeUserSetup-x64-1.75.0.exe";
     public static void main(String[] args) {
-        //String downloadUrl =  "https://az764295.vo.msecnd.net/stable/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/VSCodeUserSetup-x64-1.75.0.exe";
-        PrintAllProperties();
+        String downloadUrl =  "https://az764295.vo.msecnd.net/stable/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/VSCodeUserSetup-x64-1.75.0.exe";
+        //PrintAllProperties();
                MainGUI mainGUI = new MainGUI();
+               getFileTotalSize(new URL(downloadUrl()));
         //startDownload(downloadUrl);
 
+    }
+
+    private static String downloadUrl() {
     }
 
     private static void PrintAllProperties() {
