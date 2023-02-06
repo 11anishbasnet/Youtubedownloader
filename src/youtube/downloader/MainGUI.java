@@ -23,6 +23,10 @@ public class MainGUI {
 
     private JPanel jPanelOne;
 
+    private JProgressBar downloadProgress;
+
+
+
     MainGUI(){
         loadGUIComponents();
     }
@@ -39,6 +43,10 @@ public class MainGUI {
             JOptionPane.showMessageDialog(jFrame,"User input : "+userText);
         });
 
+        downloadProgress = new JProgressBar();
+        downloadProgress.setMaximum(100);
+        downloadProgress.setMinimum(1);
+        downloadProgress.setValue(10);
         jPanelOne = new JPanel();
         jPanelOne.add(textBoxLabel);
         jPanelOne.add(downloadUrlField);
@@ -46,8 +54,9 @@ public class MainGUI {
 
         jFrame.add(jPanelOne);
         jFrame.add(downloadBtm);
+        jFrame.add(downloadProgress);
 
-        jFrame.setLayout(new GridLayout(3,1));
+        jFrame.setLayout(new GridLayout(4,1));
 
         jFrame.setVisible(true);
 
@@ -96,7 +105,7 @@ public class MainGUI {
     //link ="https://az764295.vo.msecnd.net/stable/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/VSCodeUserSetup-x64-1.75.0.exe";
     public static void main(String[] args) {
         //String downloadUrl =  "https://az764295.vo.msecnd.net/stable/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/VSCodeUserSetup-x64-1.75.0.exe";
-//        PrintAllProperties();
+        PrintAllProperties();
                MainGUI mainGUI = new MainGUI();
         //startDownload(downloadUrl);
 
